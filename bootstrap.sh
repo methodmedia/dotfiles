@@ -6,10 +6,12 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -av --no-perms . ~
 	source ~/.bash_profile
 }
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if [ "$1" "==" "--force" -o "$1" "==" "-f" ]; then
 	doIt
 else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
+  
+  echo -n "This may overwrite existing files in your home directory. Are you sure? (y/n) "
+  read REPLY
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		doIt
